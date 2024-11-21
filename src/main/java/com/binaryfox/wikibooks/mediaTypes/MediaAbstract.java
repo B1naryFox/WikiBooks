@@ -10,13 +10,19 @@ public abstract class MediaAbstract {
         return title;
     }
     private void setTitle(String title) throws IllegalArgumentException {
-        if (title == null || title.isEmpty()) {
+        if (checkStringInvalid(title)) {
             throw new IllegalArgumentException("Title cannot be null or empty");
         }
         this.title = title;
     }
 
+    public static boolean checkStringInvalid(String string){
+        return string == null || string.trim().isEmpty();
+    }
+
+    // this method is taking isbn numbers, removes dashes and spaces and returns the numbers in an Array to be used in the checkISBN methods
     public static int[] stringToIntArray(String string) {
+        string = string.replaceAll("-", "").replaceAll(" ", "");
         int[] result = new int[string.length()];
         for (int i = 0; i < string.length(); i++) {
             result[i] = Integer.parseInt(string.substring(i, i + 1));

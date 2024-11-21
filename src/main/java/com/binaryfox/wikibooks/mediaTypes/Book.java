@@ -20,7 +20,7 @@ public class Book extends MediaAbstract{
         return author;
     }
     private void setAuthor(String author) throws IllegalArgumentException{
-        if (author == null || author.trim().isEmpty()) {
+        if (checkStringInvalid(author)) {
             throw new IllegalArgumentException("Author cannot be null or empty");
         }
         this.author = author;
@@ -40,7 +40,7 @@ public class Book extends MediaAbstract{
         return publisher;
     }
     private void setPublisher(String publisher) throws IllegalArgumentException{
-        if (publisher == null || publisher.trim().isEmpty()) {
+        if (checkStringInvalid(publisher)) {
             throw new IllegalArgumentException("Publisher cannot be null or empty");
         }
         this.publisher = publisher;
@@ -50,7 +50,7 @@ public class Book extends MediaAbstract{
         return isbn;
     }
     private void setIsbn(String isbn) throws IllegalArgumentException{
-        if (isbn == null || isbn.trim().isEmpty()) {
+        if (checkStringInvalid(isbn)) {
             throw new IllegalArgumentException("ISBN cannot be null or empty");
         }
         int[] isbnArray = stringToIntArray(isbn);
